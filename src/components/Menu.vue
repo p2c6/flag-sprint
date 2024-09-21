@@ -1,14 +1,18 @@
+<script setup lang="ts">
+import { RouterLink } from 'vue-router';
+</script>
+
 <scrip setup lang="ts">
 
 </scrip>
 
 <template>
-    <main>
-        <nav>
+        <nav class="mr-100 mt-1 fs-mobile">
             <ul>
-                <li>Play</li>
-                <li>Instructions</li>
+                <RouterLink to="/play">
+                    <li>PLAY</li>
+                </RouterLink>
+                <li>INSTRUCTION</li>
             </ul>
         </nav>
-    </main>
 </template>
