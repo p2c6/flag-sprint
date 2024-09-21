@@ -1,20 +1,3 @@
-<style scoped>
-.countdown {
-  opacity: 1;
-  position: relative;
-  animation-name: slide;
-  animation-duration: 1s;
-}
-
-@keyframes slide {
-  0% { left: 0px; top: 0px; opacity: 0.8; }
-  25% { left: 100px; top: 0px; opacity: 0.6; }
-  50% { left: 130px; top: 0px; opacity: 0.4; }
-  75% { left: 150px; top: 0px; opacity: 0.2; }
-  100% { left: 180px; top: 0px; opacity: 0; }
-}
-</style>
-
 <script setup lang="ts">
 import { ref } from 'vue';
 
@@ -37,7 +20,6 @@ const displayCountdown = () => {
 const startGame = () => {
   showCountdown.value = true;
 
- 
   setTimeout(() => {
     displayCountdown();
   }, 100); 
