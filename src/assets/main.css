@@ -1,4 +1,6 @@
 @import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
 
 #app {
   max-width: 1280px;
@@ -34,4 +36,20 @@
 .flex-end {
   justify-content: flex-end;
 }
+
+.jersey-10-charted-regular {
+  font-family: "Jersey 10 Charted", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.pixelify-sans {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 48px;
+}
+
+
 
