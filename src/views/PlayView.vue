@@ -44,7 +44,7 @@ const flagStore = useFlagStore()
     </div>
     <div class="playing-timer-container">
       <div class="flex flex-end mt-1">
-        <div class="playingTimer">
+        <div class="playing-timer">
           <p>
             5.2
           </p>

@@ -268,7 +268,7 @@ nav {
   outline: none;
 }
 
-.playingTimer {
+.playing-timer {
   color: var(---bg-light);
   border-radius: 100px;
   border: 2px solid #29fff1;
