@@ -20,9 +20,8 @@ const flagStore = useFlagStore()
     </div>
   </div>
 
-
   <div id="playing" class="flex flex-col items-center justify-center" v-show="!flagStore.showCountdown && flagStore.showOnGameView">
-    <div style="width: 120%; margin-bottom: 10px;">
+    <div class="playing-header">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <a class="text-light pixelify-sans" href="">⬅️ Back</a>
         <p class="text-light pixelify-sans">🪙 Score: 0</p>
