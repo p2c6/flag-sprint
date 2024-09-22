@@ -1,46 +1,44 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 
 export const useFlagStore = defineStore('flag', () => {
     const countDown = ref<number>(3);
     const showCountdown = ref<boolean>(false);
+    const showOnGameView = ref<boolean>(false);
 
     const displayCountdown = () => {
-    const container = document.querySelector("#countdownContainer");
-    if (container) {
-        // Remove the animation class
-        container.classList.remove('countdown');
-
-        // Use a short delay before re-adding the class
+        showCountdown.value = true;
         setTimeout(() => {
-        container.classList.add('countdown');
-        }, 50); // Delay to allow the class removal to take effect
-    }
+            countDown.value--
+        }, 1000)
     };
-
+        
     const startGame = () => {
-    showCountdown.value = true;
-
-    setTimeout(() => {
-        displayCountdown();
-    }, 100); 
-
-    let countdownInterval = setInterval(() => {
-        if (countDown.value > 1) {
-        displayCountdown();
-        countDown.value--;
-        } else {
-        clearInterval(countdownInterval);
-        showCountdown.value = false; 
-        countDown.value = 3; 
-        }
-    }, 1000); 
+        let interval = setInterval(() => {
+            if (countDown.value > 1) {
+                displayCountdown()
+            } else {
+                clearInterval(interval)
+                showCountdown.value = false;
+            }
+        }, 1000)
     };
+
+    const displayOnGame = () => {
+        showOnGameView.value = true;
+    }
+
+    watch(countDown, (newVal) => {
+        if (newVal < 1) {
+            displayOnGame()
+        }
+    })
 
     return {
         startGame,
         countDown,
-        showCountdown
+        showCountdown,
+        showOnGameView
     }
 });
