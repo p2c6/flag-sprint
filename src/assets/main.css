@@ -286,6 +286,10 @@ nav {
   margin-bottom: 10px;
 }
 
+.playing-timer-container {
+  width: 98%;
+}
+
 
 @keyframes slide {
   0%   { left:0px; top:0px; opacity: 0.8;}

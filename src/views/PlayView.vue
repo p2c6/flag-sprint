@@ -42,7 +42,7 @@ const flagStore = useFlagStore()
       <input type="text" class="textField">
       <input type="text" class="textField">
     </div>
-    <div style="width: 98%;">
+    <div class="playing-timer-container">
       <div class="flex flex-end mt-1">
         <div class="playingTimer">
           <p>
