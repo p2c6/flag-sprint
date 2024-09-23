@@ -154,6 +154,14 @@ export const useSetupStore = defineStore('setup', () => {
         isGameOver.value = true;
     }
 
+    const handlePlayAgain = () => {
+        showCountdown.value = false;
+        showOnGameView.value = false;
+        countDown.value = 3;
+        onGameTimer.value = 10;
+        isGameOver.value = false;
+    }
+
     watch(onGameTimer, (newVal) => {
         if(newVal  < 1) {
             gameOver()
@@ -195,5 +203,6 @@ export const useSetupStore = defineStore('setup', () => {
         showOnGameView,
         handleChangeInput,
         setupGame,
+        handlePlayAgain,
     }
 });

@@ -22,6 +22,10 @@ a {
   font-weight: normal;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .text-logo {
   color: #29fff1;
   font-size: 24px;

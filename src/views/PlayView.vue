@@ -60,6 +60,7 @@ const setupStore = useSetupStore()
       <p class="text-white pixelify-sans fs-36">☠️ Game Over</p>
       <p class="text-white pixelify-sans fs-18"> Your score:</p>
       <p class="text-white pixelify-sans fs-18"> 🪙 {{ setupStore.score }}</p>
+      <div class="text-white pixelify-sans fs-18 mt-1 clickable" @click="setupStore.handlePlayAgain">🕹️ Play Again</div>
     </div>
   </div>
 
