@@ -96,6 +96,7 @@ export const useSetupStore = defineStore('setup', () => {
             answer.value = {isCorrect: true, timeGot: onGameTimer.value}
             setupGame()
             incrementScore()
+            onGameTimer.value = 10;
         }
     }
 
@@ -110,7 +111,6 @@ export const useSetupStore = defineStore('setup', () => {
         if (willConfigure) {
             clearFields()
             configureTextField()
-            runTimer()
         }
         
     }
@@ -147,7 +147,7 @@ export const useSetupStore = defineStore('setup', () => {
     const timer = computed(() => {
         return `${onGameTimer.value}s`
     })
-
+    
     watch(letter, (newVal:string) => {
         checkAnswer(newVal)
     })
@@ -155,6 +155,7 @@ export const useSetupStore = defineStore('setup', () => {
     watch(showCountdown, (newVal) => {
         if(!newVal) {
             setupGame()
+            runTimer()
         }
     })
 
