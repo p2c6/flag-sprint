@@ -1,68 +1,11 @@
 <script setup lang="ts">
 import { useSetupStore } from '@/stores/setup';
-import { computed, onMounted, reactive, ref, watch } from 'vue';
-import countries from "../../flag.json";
+import { onMounted } from 'vue';
 
 const setupStore = useSetupStore()
 
-const letter = ref<string>('')
-
-interface Question {
-  flagUrl: string,
-  country: string
-}
-
-const question = ref<Question>({
-  flagUrl: "https://flagsapi.com/PH/flat/64.png",
-  country: "Philippines"
-})
-
-const setupTextField = () => {
-  var fields = document.getElementsByClassName('textField')
-  Array.from(fields).forEach(function(field){
-    field.addEventListener("keyup", function(event) {
-      if (field.value.length == 1 && event.code !== "Backspace") {
-        if (field.nextElementSibling) {
-          field.nextElementSibling.focus()
-        }
-      }
-
-      if(event.code === "Backspace" && field.value.length == 0) {
-        if (field.previousElementSibling) {
-          field.previousElementSibling.focus()
-        }
-      }
-    })
-  })
-}
-
-const handleChangeInput = (event:any) => {
-    const fields = document.getElementsByClassName('textField');
-    letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value).join('');
-}
-
-const generateQuestion = () => {
-  
-  const randomIndex:number = Math.floor(Math.random() * countries.length) + 1;
-  const questionToAnswer = countries[randomIndex];
-
-  question.value = {flagUrl: questionToAnswer.flagUrl, country: questionToAnswer.country};
-}
-
-const nextQuestion = () => generateQuestion();
-
-const checkInput = (value: string) => {
-  if (question.value.country.toLowerCase() == value.toLowerCase()) {
-    nextQuestion()
-  }
-}
-
-watch(letter, (newVal:string) => {
-  checkInput(newVal)
-})
-
 onMounted(() => {
-  setupTextField()
+  setupStore.setupTextField()
 })
 
 </script>
@@ -92,20 +35,20 @@ onMounted(() => {
     <p class="text-white mt-1">Can you guess what flag is this? 🚩</p>
 
     <div class="flag-container">
-      <img :src="question.flagUrl">
+      <img :src="setupStore.question.flagUrl">
     </div>
     <div class="flex" id="textfield-container">
-      <input type="text" class="textField" maxlength="1" @input="event => handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => handleChangeInput(event)">
+      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
+      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
+      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
+      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
+      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
+      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
+      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
+      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
+      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
+      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
+      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
     </div>
     <div class="playing-timer-container">
       <div class="flex flex-end mt-1">
