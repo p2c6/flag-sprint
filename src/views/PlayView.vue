@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import { useSetupStore } from '@/stores/setup';
 import { onMounted } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const setupStore = useSetupStore()
-
-onMounted(() => {
-  setupStore.setupGame()
-})
-
 </script>
 
 <template>
@@ -28,7 +24,9 @@ onMounted(() => {
   <div id="playing" class="flex flex-col items-center justify-center" v-show="!setupStore.showCountdown && setupStore.showOnGameView">
     <div class="playing-header">
       <div class="flex justify-between items-center">
-        <a class="text-light pixelify-sans" href="">⬅️ Back</a>
+        <RouterLink :to="{name:'menu'}">
+          <a class="text-light pixelify-sans">⬅️ Back</a>
+        </RouterLink>
         <p class="text-light pixelify-sans">🪙 Score: 0</p>
       </div>
     </div>
