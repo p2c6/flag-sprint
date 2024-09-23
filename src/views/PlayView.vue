@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useFlagStore } from '@/stores/flag';
+import { useSetupStore } from '@/stores/setup';
 import { computed, onMounted, reactive, ref, watch } from 'vue';
 import countries from "../../flag.json";
 
-const flagStore = useFlagStore()
+const setupStore = useSetupStore()
 
 const letter = ref<string>('')
 
@@ -69,20 +69,20 @@ onMounted(() => {
 
 <template>
   <div id="starting">
-    <div class="flex flex-col justify-center items-center" v-if="!flagStore.showCountdown && !flagStore.showOnGameView">
-      <div class="start-btn" @click="flagStore.startGame">
+    <div class="flex flex-col justify-center items-center" v-if="!setupStore.showCountdown && !setupStore.showOnGameView">
+      <div class="start-btn" @click="setupStore.startGame">
         <p class="pixelify-sans">Start</p>
       </div>
 
       <div class="description text-white mt-1 text-to-center">💭 Guess as many flags as you can to become an ultimate flag master! 👑</div>
     </div>
     <div v-else>
-      <div v-if="flagStore.countDown > 0 && !flagStore.showOnGameView" class="pixelify-sans fs-60" id="countdownContainer">{{ flagStore.countDown }}</div>
+      <div v-if="setupStore.countDown > 0 && !setupStore.showOnGameView" class="pixelify-sans fs-60" id="countdownContainer">{{ setupStore.countDown }}</div>
 
     </div>
   </div>
 
-  <div id="playing" class="flex flex-col items-center justify-center" v-show="!flagStore.showCountdown && flagStore.showOnGameView">
+  <div id="playing" class="flex flex-col items-center justify-center" v-show="!setupStore.showCountdown && setupStore.showOnGameView">
     <div class="playing-header">
       <div class="flex justify-between items-center">
         <a class="text-light pixelify-sans" href="">⬅️ Back</a>

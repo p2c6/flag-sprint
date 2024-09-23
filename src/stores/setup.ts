@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { ref, watch } from "vue";
 
 
-export const useFlagStore = defineStore('flag', () => {
+export const useSetupStore = defineStore('setup', () => {
     const countDown = ref<number>(3);
     const showCountdown = ref<boolean>(false);
     const showOnGameView = ref<boolean>(false);
