@@ -21,7 +21,7 @@ const setupStore = useSetupStore()
     </div>
   </div>
 
-  <div id="playing" class="flex flex-col items-center justify-center" v-show="!setupStore.showCountdown && setupStore.showOnGameView">
+  <div id="playing" class="flex flex-col items-center justify-center" v-show="!setupStore.showCountdown && setupStore.showOnGameView && !setupStore.isGameOver">
     <div class="playing-header">
       <div class="flex justify-between items-center">
         <RouterLink :to="{name:'menu'}">
@@ -52,6 +52,14 @@ const setupStore = useSetupStore()
           </p>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div id="game-over" v-show="setupStore.isGameOver">
+    <div class="flex flex-col justify-center items-center">
+      <p class="text-white pixelify-sans fs-36">☠️ Game Over</p>
+      <p class="text-white pixelify-sans fs-18"> Your score:</p>
+      <p class="text-white pixelify-sans fs-18"> 🪙 {{ setupStore.score }}</p>
     </div>
   </div>
 

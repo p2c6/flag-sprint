@@ -17,6 +17,8 @@ export const useSetupStore = defineStore('setup', () => {
     const onGameTimer = ref<number>(10);
     const score = ref<number>(0)
     const answer = ref({isCorrect: false, timeGot: 0});
+    const isGameOver = ref<boolean>(false);
+
     const question = ref<Question>({
         flagUrl: "https://flagsapi.com/PH/flat/64.png",
         country: "Philippines"
@@ -147,6 +149,16 @@ export const useSetupStore = defineStore('setup', () => {
     const timer = computed(() => {
         return `${onGameTimer.value}s`
     })
+
+    const gameOver = () => {
+        isGameOver.value = true;
+    }
+
+    watch(onGameTimer, (newVal) => {
+        if(newVal  < 1) {
+            gameOver()
+        }
+    })
     
     watch(letter, (newVal:string) => {
         checkAnswer(newVal)
@@ -173,6 +185,7 @@ export const useSetupStore = defineStore('setup', () => {
         textFieldCount,
         timer,
         score,
+        isGameOver,
         /*
             functions
          */
