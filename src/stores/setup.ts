@@ -61,9 +61,9 @@ export const useSetupStore = defineStore('setup', () => {
     const generateQuestion = () => {
   
         const randomIndex:number = Math.floor(Math.random() * countries.length) + 1;
-        const questionToAnswer = countries[randomIndex];
+        const questionToAnswer = <Question>{flagUrl: countries[randomIndex].flagUrl, country: countries[randomIndex].country}
       
-        question.value = {flagUrl: questionToAnswer.flagUrl, country: questionToAnswer.country};
+        question.value = questionToAnswer
     }
 
     const nextQuestion = () => generateQuestion();
