@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import countries from "../../flag.json";
 
 interface Question {
@@ -14,6 +14,7 @@ export const useSetupStore = defineStore('setup', () => {
     const letter = ref<string>('')
     const textFieldCount = ref<number>(0);
     const willConfigure = ref<boolean>(false)
+    const onGameTimer = ref<number>(10);
     const question = ref<Question>({
         flagUrl: "https://flagsapi.com/PH/flat/64.png",
         country: "Philippines"
@@ -105,6 +106,7 @@ export const useSetupStore = defineStore('setup', () => {
         if (willConfigure) {
             clearFields()
             configureTextField()
+            runTimer()
         }
         
     }
@@ -118,6 +120,22 @@ export const useSetupStore = defineStore('setup', () => {
             }
         }, 100)
     }
+
+    const runTimer = () => {
+        console.log('called')
+        let timer = setInterval(() => {
+            onGameTimer.value--;
+            if (onGameTimer.value <= 0) {
+                clearInterval(timer);
+                onGameTimer.value = 0;
+            }
+        }, 1000)
+    }
+
+    const timer = computed(() => {
+        return `${onGameTimer.value}s`
+    })
+    
 
     watch(letter, (newVal:string) => {
         checkAnswer(newVal)
@@ -141,6 +159,7 @@ export const useSetupStore = defineStore('setup', () => {
          */
         question,
         textFieldCount,
+        timer,
         /*
             functions
          */

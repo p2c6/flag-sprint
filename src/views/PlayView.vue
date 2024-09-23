@@ -48,7 +48,7 @@ const setupStore = useSetupStore()
       <div class="flex flex-end mt-1">
         <div class="playing-timer">
           <p>
-            ⏰ 5.2 
+            ⏰ {{ setupStore.timer }}
           </p>
         </div>
       </div>
