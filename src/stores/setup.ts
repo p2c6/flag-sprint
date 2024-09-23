@@ -83,12 +83,14 @@ export const useSetupStore = defineStore('setup', () => {
         willConfigure.value = true;
     }
 
-    const checkInput = (value: string) => {
+    const clearFields = () => {
+        var fields = document.getElementsByClassName('textField')
+        letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value = "").join('');
+    }
+
+    const checkAnswer = (value: string) => {
         if (question.value.country.toLowerCase() == value.toLowerCase()) {
             setupGame()
-
-            var fields = document.getElementsByClassName('textField')
-            letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value = "").join('');
         }
     }
 
@@ -101,6 +103,7 @@ export const useSetupStore = defineStore('setup', () => {
         popQuestion()
 
         if (willConfigure) {
+            clearFields()
             configureTextField()
         }
         
@@ -117,7 +120,7 @@ export const useSetupStore = defineStore('setup', () => {
     }
 
     watch(letter, (newVal:string) => {
-        checkInput(newVal)
+        checkAnswer(newVal)
     })
 
     watch(showCountdown, (newVal) => {
