@@ -16,10 +16,12 @@ const router = createRouter({
       children: [
         {
           path: 'menu',
+          name: 'menu',
           component: MainMenuView,
         },
         {
           path: 'play',
+          name: 'play',
           component: PlayView,
         },
         
