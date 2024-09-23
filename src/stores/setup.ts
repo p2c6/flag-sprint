@@ -14,7 +14,6 @@ export const useSetupStore = defineStore('setup', () => {
     const letter = ref<string>('')
     const textFieldCount = ref<number>(0);
     const willConfigure = ref<boolean>(false)
-    const answer = ref<number[]>([])
     const question = ref<Question>({
         flagUrl: "https://flagsapi.com/PH/flat/64.png",
         country: "Philippines"
@@ -71,15 +70,10 @@ export const useSetupStore = defineStore('setup', () => {
         
         const randomIndex:number = Math.floor(Math.random() * countries.length) + 1;
         const questionToAnswer: Question = {flagUrl: countries[randomIndex].flagUrl, country: countries[randomIndex].country.replace(/\s+/g, '')}
-        console.log('questionToAnswer', questionToAnswer)
 
         question.value = questionToAnswer
 
         console.log('country', questionToAnswer.country)
-
-
-        console.log('length', questionToAnswer.country.length)
-
         
         textFieldCount.value = questionToAnswer.country.length;
     }
@@ -144,7 +138,6 @@ export const useSetupStore = defineStore('setup', () => {
          */
         question,
         textFieldCount,
-        answer,
         /*
             functions
          */
