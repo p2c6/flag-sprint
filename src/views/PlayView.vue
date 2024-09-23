@@ -27,7 +27,7 @@ const setupStore = useSetupStore()
         <RouterLink :to="{name:'menu'}">
           <a class="text-light pixelify-sans">⬅️ Back</a>
         </RouterLink>
-        <p class="text-light pixelify-sans">🪙 Score: 0</p>
+        <p class="text-light pixelify-sans">🪙 Score: {{ setupStore.score }}</p>
       </div>
     </div>
     <p class="text-white mt-1">Can you guess what flag is this? 🚩</p>
