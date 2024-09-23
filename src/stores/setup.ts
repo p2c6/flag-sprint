@@ -22,7 +22,7 @@ export const useSetupStore = defineStore('setup', () => {
     const question = ref<Question>({
         flagUrl: "https://flagsapi.com/PH/flat/64.png",
         country: "Philippines"
-      })
+    })
 
     const displayCountdown = () => {
         showCountdown.value = true;
