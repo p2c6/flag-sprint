@@ -12,6 +12,9 @@ export const useSetupStore = defineStore('setup', () => {
     const showCountdown = ref<boolean>(false);
     const showOnGameView = ref<boolean>(false);
     const letter = ref<string>('')
+    const textFieldCount = ref<number>(0);
+    const willConfigure = ref<boolean>(false)
+    const answer = ref<number[]>([])
     const question = ref<Question>({
         flagUrl: "https://flagsapi.com/PH/flat/64.png",
         country: "Philippines"
@@ -39,7 +42,8 @@ export const useSetupStore = defineStore('setup', () => {
         showOnGameView.value = true;
     }
 
-    const setupTextField = () => {
+    const forceTextFieldConfig = () => {
+        console.log('called...')
         var fields = document.getElementsByClassName('textField')
         Array.from(fields).forEach(function(field){
             field.addEventListener("keyup", function(event) {
@@ -56,21 +60,41 @@ export const useSetupStore = defineStore('setup', () => {
             }
             })
         })
+
+        fields[0].focus()
+
+        willConfigure.value = false;
+        
     }
 
     const generateQuestion = () => {
-  
+        
         const randomIndex:number = Math.floor(Math.random() * countries.length) + 1;
-        const questionToAnswer: Question = {flagUrl: countries[randomIndex].flagUrl, country: countries[randomIndex].country}
-      
+        const questionToAnswer: Question = {flagUrl: countries[randomIndex].flagUrl, country: countries[randomIndex].country.replace(/\s+/g, '')}
+        console.log('questionToAnswer', questionToAnswer)
+
         question.value = questionToAnswer
+
+        console.log('country', questionToAnswer.country)
+
+
+        console.log('length', questionToAnswer.country.length)
+
+        
+        textFieldCount.value = questionToAnswer.country.length;
     }
 
-    const nextQuestion = () => generateQuestion();
+    const popQuestion = () => {
+        generateQuestion()
+        willConfigure.value = true;
+    }
 
     const checkInput = (value: string) => {
         if (question.value.country.toLowerCase() == value.toLowerCase()) {
-            nextQuestion()
+            setupGame()
+
+            var fields = document.getElementsByClassName('textField')
+            letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value = "").join('');
         }
     }
 
@@ -79,8 +103,33 @@ export const useSetupStore = defineStore('setup', () => {
         letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value).join('');
     }
 
+    const setupGame = () => {
+        popQuestion()
+
+        if (willConfigure) {
+            configureTextField()
+        }
+        
+    }
+
+    const configureTextField = () => {
+        let interval = setInterval(() => {
+            if (willConfigure.value) {
+                forceTextFieldConfig()
+            } else {
+                clearInterval(interval)
+            }
+        }, 100)
+    }
+
     watch(letter, (newVal:string) => {
         checkInput(newVal)
+    })
+
+    watch(showCountdown, (newVal) => {
+        if(!newVal) {
+            setupGame()
+        }
     })
 
     watch(countDown, (newVal) => {
@@ -94,6 +143,8 @@ export const useSetupStore = defineStore('setup', () => {
             variables
          */
         question,
+        textFieldCount,
+        answer,
         /*
             functions
          */
@@ -101,7 +152,7 @@ export const useSetupStore = defineStore('setup', () => {
         countDown,
         showCountdown,
         showOnGameView,
-        setupTextField,
-        handleChangeInput
+        handleChangeInput,
+        setupGame,
     }
 });

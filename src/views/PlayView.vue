@@ -5,7 +5,7 @@ import { onMounted } from 'vue';
 const setupStore = useSetupStore()
 
 onMounted(() => {
-  setupStore.setupTextField()
+  setupStore.setupGame()
 })
 
 </script>
@@ -38,17 +38,13 @@ onMounted(() => {
       <img :src="setupStore.question.flagUrl">
     </div>
     <div class="flex" id="textfield-container">
-      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
-      <input type="text" class="textField" maxlength="1" @input="event => setupStore.handleChangeInput(event)">
+      <input v-for="field in setupStore.textFieldCount" 
+        :key="field"
+        type="text" 
+        class="textField" 
+        maxlength="1" 
+        @input="event => setupStore.handleChangeInput(event)"
+      >
     </div>
     <div class="playing-timer-container">
       <div class="flex flex-end mt-1">
