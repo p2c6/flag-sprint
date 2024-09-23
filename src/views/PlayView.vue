@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router';
 const setupStore = useSetupStore()
 
 onUnmounted(() => {
-  setupStore.handlePlayAgain()
+  setupStore.handleClearSetup()
 })
 </script>
 
@@ -64,7 +64,7 @@ onUnmounted(() => {
       <p class="text-white pixelify-sans fs-36">☠️ Game Over</p>
       <p class="text-white pixelify-sans fs-18 mt-1"> Your score:</p>
       <p class="text-white pixelify-sans fs-18"> 🪙 {{ setupStore.score }}</p>
-      <div class="text-white pixelify-sans fs-18 clickable" @click="setupStore.handlePlayAgain">🕹️ Play Again</div>
+      <div class="text-white pixelify-sans fs-18 clickable" @click="setupStore.handleClearSetup">🕹️ Play Again</div>
       <RouterLink :to="{name: 'menu'}" style="margin-top: 100px;">
         <a class="text-white pixelify-sans fs-18">
           📋 Main Menu

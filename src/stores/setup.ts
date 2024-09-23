@@ -154,7 +154,7 @@ export const useSetupStore = defineStore('setup', () => {
         isGameOver.value = true;
     }
 
-    const handlePlayAgain = () => {
+    const handleClearSetup = () => {
         showCountdown.value = false;
         showOnGameView.value = false;
         countDown.value = 3;
@@ -203,6 +203,6 @@ export const useSetupStore = defineStore('setup', () => {
         showOnGameView,
         handleChangeInput,
         setupGame,
-        handlePlayAgain,
+        handleClearSetup,
     }
 });
