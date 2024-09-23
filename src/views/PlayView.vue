@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { useSetupStore } from '@/stores/setup';
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 import { RouterLink } from 'vue-router';
 
 const setupStore = useSetupStore()
+
+onUnmounted(() => {
+  setupStore.handlePlayAgain()
+})
 </script>
 
 <template>
@@ -58,9 +62,14 @@ const setupStore = useSetupStore()
   <div id="game-over" v-show="setupStore.isGameOver">
     <div class="flex flex-col justify-center items-center">
       <p class="text-white pixelify-sans fs-36">☠️ Game Over</p>
-      <p class="text-white pixelify-sans fs-18"> Your score:</p>
+      <p class="text-white pixelify-sans fs-18 mt-1"> Your score:</p>
       <p class="text-white pixelify-sans fs-18"> 🪙 {{ setupStore.score }}</p>
-      <div class="text-white pixelify-sans fs-18 mt-1 clickable" @click="setupStore.handlePlayAgain">🕹️ Play Again</div>
+      <div class="text-white pixelify-sans fs-18 clickable" @click="setupStore.handlePlayAgain">🕹️ Play Again</div>
+      <RouterLink :to="{name: 'menu'}" style="margin-top: 100px;">
+        <a class="text-white pixelify-sans fs-18">
+          📋 Main Menu
+        </a>
+      </RouterLink>
     </div>
   </div>
 
