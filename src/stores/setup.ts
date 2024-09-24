@@ -177,7 +177,7 @@ export const useSetupStore = defineStore('setup', () => {
         stopTimer()
     }
 
-    watch(onGameTimer, (newVal) => {
+    watch(onGameTimer, (newVal:number) => {
         if(newVal  < 1) {
             gameOver()
         }
@@ -187,14 +187,14 @@ export const useSetupStore = defineStore('setup', () => {
         checkAnswer(newVal)
     })
 
-    watch(showCountdown, (newVal) => {
+    watch(showCountdown, (newVal:boolean) => {
         if(!newVal) {
             setupGame()
             runTimer()
         }
     })
 
-    watch(countDown, (newVal) => {
+    watch(countDown, (newVal:number) => {
         if (newVal < 1) {
             displayOnGame()
         }
