@@ -13,6 +13,11 @@ interface Country {
     code3: string
 };
 
+interface Answer {
+    isCorrect: boolean,
+    timeGot: number
+}
+
 export const useSetupStore = defineStore('setup', () => {
     const countDown = ref<number>(3);
     const showCountdown = ref<boolean>(false);
@@ -22,7 +27,7 @@ export const useSetupStore = defineStore('setup', () => {
     const willConfigure = ref<boolean>(false)
     const onGameTimer = ref<number>(10);
     const score = ref<number>(0)
-    const answer = ref({isCorrect: false, timeGot: 0});
+    const answer = ref<Answer>({isCorrect: false, timeGot: 0});
     const isGameOver = ref<boolean>(false);
     const myTimer = ref();
     const allCountries =ref<Country[]>(countries);
