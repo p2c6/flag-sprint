@@ -7,6 +7,12 @@ interface Question {
     country: string
 }
 
+interface Country {
+    name: string,
+    code2: string,
+    code3: string
+};
+
 export const useSetupStore = defineStore('setup', () => {
     const countDown = ref<number>(3);
     const showCountdown = ref<boolean>(false);
@@ -19,6 +25,7 @@ export const useSetupStore = defineStore('setup', () => {
     const answer = ref({isCorrect: false, timeGot: 0});
     const isGameOver = ref<boolean>(false);
     const myTimer = ref();
+    const allCountries =ref<Country[]>(countries);
 
     const question = ref<Question>({
         flagUrl: "",
@@ -80,7 +87,7 @@ export const useSetupStore = defineStore('setup', () => {
     const generateQuestion = () => {
         
         const randomIndex:number = Math.floor(Math.random() * countries.length) + 1;
-        const country = countries[randomIndex];
+        const country = allCountries.value[randomIndex];
         const questionToAnswer: Question = {flagUrl: getFlagUrl(country.code2.toLowerCase()), country: country.name.replace(/\s+/g, '')}
 
         question.value = questionToAnswer
