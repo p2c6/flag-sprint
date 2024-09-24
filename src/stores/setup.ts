@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { computed, reactive, ref, watch } from "vue";
-import countries from "../../flag.json";
+import countries from "../../countries.json";
 
 interface Question {
     flagUrl: string,
@@ -73,10 +73,15 @@ export const useSetupStore = defineStore('setup', () => {
         
     }
 
+    const getFlagUrl = (code:string) => {
+        return `https://flagcdn.com/60x45/${code}.png`
+    }
+
     const generateQuestion = () => {
         
         const randomIndex:number = Math.floor(Math.random() * countries.length) + 1;
-        const questionToAnswer: Question = {flagUrl: countries[randomIndex].flagUrl, country: countries[randomIndex].country.replace(/\s+/g, '')}
+        const country = countries[randomIndex];
+        const questionToAnswer: Question = {flagUrl: getFlagUrl(country.code2.toLowerCase()), country: country.name.replace(/\s+/g, '')}
 
         question.value = questionToAnswer
 
