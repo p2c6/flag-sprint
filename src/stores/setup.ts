@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { computed, reactive, ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import countries from "../../countries.json";
 
 interface Question {
@@ -49,29 +49,29 @@ export const useSetupStore = defineStore('setup', () => {
     }
 
     const forceTextFieldConfig = () => {
-        console.log('called...')
-        var fields = document.getElementsByClassName('textField')
-        Array.from(fields).forEach(function(field){
-            field.addEventListener("keyup", function(event) {
-            if (field.value.length == 1 && event.code !== "Backspace") {
-                if (field.nextElementSibling) {
-                field.nextElementSibling.focus()
-                }
-            }
+        var fields = document.getElementsByClassName('textField');
         
-            if(event.code === "Backspace" && field.value.length == 0) {
-                if (field.previousElementSibling) {
-                field.previousElementSibling.focus()
+        Array.from(fields).forEach(function(field) {
+            field.addEventListener("input", function(event) {
+                if (field.value.length == 1 && event.inputType !== "deleteContentBackward") {
+                    if (field.nextElementSibling) {
+                        field.nextElementSibling.focus();
+                    }
                 }
-            }
-            })
-        })
-
-        fields[0].focus()
-
+            });
+            
+            field.addEventListener("keydown", function(event) {
+                if (event.code === "Backspace" && field.value.length == 0) {
+                    if (field.previousElementSibling) {
+                        field.previousElementSibling.focus();
+                    }
+                }
+            });
+        });
+        
+        fields[0].focus();
         willConfigure.value = false;
-        
-    }
+    };
 
     const getFlagUrl = (code:string) => {
         return `https://flagcdn.com/60x45/${code}.png`
@@ -135,7 +135,7 @@ export const useSetupStore = defineStore('setup', () => {
     }
 
     const runTimer = () => {
-         myTimer.value = setInterval(() => {
+        myTimer.value = setInterval(() => {
             onGameTimer.value--;
             if (onGameTimer.value <= 0) {
                 clearInterval(myTimer.value);
