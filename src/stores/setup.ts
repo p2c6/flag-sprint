@@ -41,14 +41,14 @@ export const useSetupStore = defineStore('setup', () => {
         indexLocatedAt: null
     })
 
-    const displayCountdown = () => {
+    const displayCountdown = (): void => {
         showCountdown.value = true;
         setTimeout(() => {
             countDown.value--
         }, 1000)
     };
         
-    const startGame = () => {
+    const startGame = (): void => {
         score.value = 0;
         let interval = setInterval(() => {
             if (countDown.value > 1) {
@@ -60,11 +60,11 @@ export const useSetupStore = defineStore('setup', () => {
         }, 1000)
     };
 
-    const displayOnGame = () => {
+    const displayOnGame = (): void => {
         showOnGameView.value = true;
     }
 
-    const forceTextFieldConfig = () => {
+    const forceTextFieldConfig = (): void => {
         var fields = document.getElementsByClassName('textField');
         
         Array.from(fields).forEach(function(field) {
@@ -89,11 +89,11 @@ export const useSetupStore = defineStore('setup', () => {
         willConfigure.value = false;
     };
 
-    const getFlagUrl = (code:string) => {
+    const getFlagUrl = (code:string):string => {
         return `https://flagcdn.com/60x45/${code}.png`
     }
 
-    const generateQuestion = () => {
+    const generateQuestion = () :void => {
         const randomIndex:number = Math.floor(Math.random() * allCountries.value.length);
         const country = allCountries.value[randomIndex];
         
@@ -112,12 +112,12 @@ export const useSetupStore = defineStore('setup', () => {
         textFieldCount.value = questionToAnswer.country.length;
     }
 
-    const popQuestion = () => {
+    const popQuestion = (): void => {
         generateQuestion()
         willConfigure.value = true;
     }
 
-    const clearFields = () => {
+    const clearFields = (): void => {
         var fields = document.getElementsByClassName('textField')
         letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value = "").join('');
     }
@@ -149,12 +149,12 @@ export const useSetupStore = defineStore('setup', () => {
         allCountries.value = [...completeCountries.value];
     };
 
-    const handleChangeInput = (event:any) => {
+    const handleChangeInput = (event:any): void => {
         const fields = document.getElementsByClassName('textField');
         letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value).join('');
     }
 
-    const setupGame = () => {
+    const setupGame = (): void => {
         popQuestion()
 
         if (willConfigure) {
@@ -164,7 +164,7 @@ export const useSetupStore = defineStore('setup', () => {
         
     }
 
-    const configureTextField = () => {
+    const configureTextField = () :void => {
         let interval = setInterval(() => {
             if (willConfigure.value) {
                 forceTextFieldConfig()
@@ -174,7 +174,7 @@ export const useSetupStore = defineStore('setup', () => {
         }, 100)
     }
 
-    const runTimer = () => {
+    const runTimer = (): void => {
         myTimer.value = setInterval(() => {
             onGameTimer.value--;
             if (onGameTimer.value <= 0) {
@@ -184,13 +184,13 @@ export const useSetupStore = defineStore('setup', () => {
         }, 1000)
     }
 
-    const stopTimer = () => {
+    const stopTimer = (): void => {
         if(myTimer.value) {
             clearInterval(myTimer.value)
         }
     }
 
-    const incrementScore = () => {
+    const incrementScore = (): void => {
         if (answer.value.isCorrect && answer.value.timeGot > 5) {
             score.value += 200;
             return;
@@ -199,16 +199,16 @@ export const useSetupStore = defineStore('setup', () => {
         score.value +=100;
     }
 
-    const timer = computed(() => {
+    const timer = computed((): string => {
         return `${onGameTimer.value}s`
     })
 
-    const gameOver = () => {
+    const gameOver = (): void => {
         isGameOver.value = true;
         stopTimer()
     }
 
-    const handleClearSetup = () => {
+    const handleClearSetup = (): void => {
         showCountdown.value = false;
         showOnGameView.value = false;
         countDown.value = 3;
