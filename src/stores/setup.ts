@@ -20,8 +20,8 @@ export const useSetupStore = defineStore('setup', () => {
     const isGameOver = ref<boolean>(false);
 
     const question = ref<Question>({
-        flagUrl: "https://flagsapi.com/PH/flat/64.png",
-        country: "Philippines"
+        flagUrl: "",
+        country: ""
     })
 
     const displayCountdown = () => {
