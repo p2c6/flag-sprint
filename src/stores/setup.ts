@@ -32,6 +32,7 @@ export const useSetupStore = defineStore('setup', () => {
     };
         
     const startGame = () => {
+        score.value = 0;
         let interval = setInterval(() => {
             if (countDown.value > 1) {
                 displayCountdown()
