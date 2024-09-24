@@ -4,7 +4,8 @@ import countries from "../../countries.json";
 
 interface Question {
     flagUrl: string,
-    country: string
+    country: string,
+    indexLocatedAt: number | null
 }
 
 interface Country {
@@ -31,10 +32,13 @@ export const useSetupStore = defineStore('setup', () => {
     const isGameOver = ref<boolean>(false);
     const myTimer = ref();
     const allCountries =ref<Country[]>(countries);
+    const completeCountries = ref<Country[]>([...countries]);
+    const isGameDefeated = ref<boolean>(false);
 
     const question = ref<Question>({
         flagUrl: "",
-        country: ""
+        country: "",
+        indexLocatedAt: null
     })
 
     const displayCountdown = () => {
@@ -90,12 +94,18 @@ export const useSetupStore = defineStore('setup', () => {
     }
 
     const generateQuestion = () => {
-        
-        const randomIndex:number = Math.floor(Math.random() * countries.length) + 1;
+        const randomIndex:number = Math.floor(Math.random() * allCountries.value.length);
         const country = allCountries.value[randomIndex];
-        const questionToAnswer: Question = {flagUrl: getFlagUrl(country.code2.toLowerCase()), country: country.name.replace(/\s+/g, '')}
+        
+
+        const questionToAnswer: Question = {
+            flagUrl: getFlagUrl(country.code2.toLowerCase()), 
+            country: country.name.replace(/\s+/g, ''), 
+            indexLocatedAt: randomIndex
+        }
 
         question.value = questionToAnswer
+
 
         console.log('country', questionToAnswer.country)
         
@@ -112,14 +122,32 @@ export const useSetupStore = defineStore('setup', () => {
         letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value = "").join('');
     }
 
+    const removeToCountryList = (index: any):void => {
+        allCountries.value.splice(index, 1);
+    }
+
     const checkAnswer = (value: string) => {
         if (question.value.country.toLowerCase() == value.toLowerCase()) {
+            removeToCountryList(question.value.indexLocatedAt)
+
             answer.value = {isCorrect: true, timeGot: onGameTimer.value}
-            setupGame()
-            incrementScore()
+
             onGameTimer.value = 10;
+
+            incrementScore()
+
+            if (allCountries.value.length == 0 ) {
+                isGameDefeated.value = true;
+                return;
+            }
+
+            setupGame()
         }
     }
+
+    const resetCountryList = (): void => {
+        allCountries.value = [...completeCountries.value];
+    };
 
     const handleChangeInput = (event:any) => {
         const fields = document.getElementsByClassName('textField');
@@ -186,7 +214,9 @@ export const useSetupStore = defineStore('setup', () => {
         countDown.value = 3;
         onGameTimer.value = 10;
         isGameOver.value = false;
+        isGameDefeated.value = false;
         stopTimer()
+        resetCountryList()
     }
 
     watch(onGameTimer, (newVal:number) => {
@@ -222,6 +252,7 @@ export const useSetupStore = defineStore('setup', () => {
         score,
         isGameOver,
         onGameTimer,
+        isGameDefeated,
         /*
             functions
          */
