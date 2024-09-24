@@ -25,7 +25,7 @@ onUnmounted(() => {
     </div>
   </div>
 
-  <div id="playing" class="flex flex-col items-center justify-center" v-show="!setupStore.showCountdown && setupStore.showOnGameView && !setupStore.isGameOver">
+  <div id="playing" class="flex flex-col items-center justify-center" v-show="!setupStore.showCountdown && setupStore.showOnGameView && !setupStore.isGameOver && !setupStore.isGameDefeated">
     <div class="playing-header">
       <div class="flex justify-between items-center">
         <RouterLink :to="{name:'menu'}">
@@ -73,4 +73,19 @@ onUnmounted(() => {
     </div>
   </div>
 
+  <div id="finish-screen" v-show="setupStore.isGameDefeated">
+    <div class="flex flex-col justify-center items-center">
+      <p class="text-white pixelify-sans fs-36">👑 You're Crown as new Flag Master!</p>
+      <p class="text-white pixelify-sans fs-18 mt-1"> Your score:</p>
+      <p class="text-white pixelify-sans fs-18"> 🪙 {{ setupStore.score }}</p>
+      <div class="text-white pixelify-sans fs-18 clickable" @click="setupStore.handleClearSetup">🕹️ Play Again</div>
+      <p class="text-white pixelify-sans fs-12">Share this link to your friends to challenge them!</p>
+      <RouterLink :to="{name: 'menu'}" style="margin-top: 100px;">
+        <a class="text-white pixelify-sans fs-18">
+          📋 Main Menu
+        </a>
+      </RouterLink>
+    </div>
+  </div>
+  
 </template>
