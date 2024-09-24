@@ -18,6 +18,7 @@ export const useSetupStore = defineStore('setup', () => {
     const score = ref<number>(0)
     const answer = ref({isCorrect: false, timeGot: 0});
     const isGameOver = ref<boolean>(false);
+    const myTimer = ref();
 
     const question = ref<Question>({
         flagUrl: "",
@@ -129,13 +130,19 @@ export const useSetupStore = defineStore('setup', () => {
     }
 
     const runTimer = () => {
-        let timer = setInterval(() => {
+         myTimer.value = setInterval(() => {
             onGameTimer.value--;
             if (onGameTimer.value <= 0) {
-                clearInterval(timer);
+                clearInterval(myTimer.value);
                 onGameTimer.value = 0;
             }
         }, 1000)
+    }
+
+    const stopTimer = () => {
+        if(myTimer.value) {
+            clearInterval(myTimer.value)
+        }
     }
 
     const incrementScore = () => {
@@ -153,6 +160,7 @@ export const useSetupStore = defineStore('setup', () => {
 
     const gameOver = () => {
         isGameOver.value = true;
+        stopTimer()
     }
 
     const handleClearSetup = () => {
@@ -161,6 +169,7 @@ export const useSetupStore = defineStore('setup', () => {
         countDown.value = 3;
         onGameTimer.value = 10;
         isGameOver.value = false;
+        stopTimer()
     }
 
     watch(onGameTimer, (newVal) => {
@@ -195,6 +204,7 @@ export const useSetupStore = defineStore('setup', () => {
         timer,
         score,
         isGameOver,
+        onGameTimer,
         /*
             functions
          */
