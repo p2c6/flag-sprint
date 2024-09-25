@@ -156,6 +156,8 @@ export const useSetupStore = defineStore('setup', () => {
     }
 
     const setupGame = (): void => {
+        scoreStore.initHighScore()
+        
         popQuestion()
 
         if (willConfigure) {
@@ -196,6 +198,7 @@ export const useSetupStore = defineStore('setup', () => {
     })
 
     const gameOver = (): void => {
+        scoreStore.setHighScore()
         isGameOver.value = true;
         stopTimer()
     }

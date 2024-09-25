@@ -64,7 +64,7 @@ onUnmounted(() => {
   <div id="game-over" v-show="setupStore.isGameOver">
     <div class="flex flex-col justify-center items-center">
       <p class="text-white pixelify-sans fs-36">☠️ Game Over</p>
-      <p class="text-white pixelify-sans fs-18 mt-1"> Your score:</p>
+      <p class="text-white pixelify-sans fs-18 mt-1">{{ scoreStore.message }}</p>
       <p class="text-white pixelify-sans fs-18"> 🪙 {{ scoreStore.score }}</p>
       <div class="text-white pixelify-sans fs-18 clickable" @click="setupStore.handleClearSetup">🕹️ Play Again</div>
       <RouterLink :to="{name: 'menu'}" style="margin-top: 100px;">
@@ -78,7 +78,7 @@ onUnmounted(() => {
   <div id="finish-screen" v-show="setupStore.isGameDefeated">
     <div class="flex flex-col justify-center items-center">
       <p class="text-white pixelify-sans fs-36">👑 You're Crown as new Flag Master!</p>
-      <p class="text-white pixelify-sans fs-18 mt-1"> Your score:</p>
+      <p class="text-white pixelify-sans fs-18 mt-1">{{ scoreStore.message }}</p>
       <p class="text-white pixelify-sans fs-18"> 🪙 {{ scoreStore.score }}</p>
       <div class="text-white pixelify-sans fs-18 clickable" @click="setupStore.handleClearSetup">🕹️ Play Again</div>
       <p class="text-white pixelify-sans fs-12">Share this link to your friends to challenge them!</p>
