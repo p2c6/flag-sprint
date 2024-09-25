@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { computed, ref, watch } from "vue";
 import countries from "../../countries.json";
+import { useScoreStore } from "./score";
 
 interface Question {
     flagUrl: string,
@@ -20,6 +21,7 @@ interface Answer {
 }
 
 export const useSetupStore = defineStore('setup', () => {
+    const scoreStore = useScoreStore();
     const countDown = ref<number>(3);
     const showCountdown = ref<boolean>(false);
     const showOnGameView = ref<boolean>(false);
@@ -27,7 +29,6 @@ export const useSetupStore = defineStore('setup', () => {
     const textFieldCount = ref<number>(0);
     const willConfigure = ref<boolean>(false)
     const onGameTimer = ref<number>(10);
-    const score = ref<number>(0)
     const answer = ref<Answer>({isCorrect: false, timeGot: 0});
     const isGameOver = ref<boolean>(false);
     const myTimer = ref();
@@ -49,7 +50,7 @@ export const useSetupStore = defineStore('setup', () => {
     };
         
     const startGame = (): void => {
-        score.value = 0;
+        scoreStore.score = 0;
         let interval = setInterval(() => {
             if (countDown.value > 1) {
                 displayCountdown()
@@ -134,7 +135,7 @@ export const useSetupStore = defineStore('setup', () => {
 
             onGameTimer.value = 10;
 
-            incrementScore()
+            scoreStore.incrementScore(answer.value)
 
             if (allCountries.value.length == 0 ) {
                 isGameDefeated.value = true;
@@ -190,15 +191,6 @@ export const useSetupStore = defineStore('setup', () => {
         }
     }
 
-    const incrementScore = (): void => {
-        if (answer.value.isCorrect && answer.value.timeGot > 5) {
-            score.value += 200;
-            return;
-        } 
-
-        score.value +=100;
-    }
-
     const timer = computed((): string => {
         return `${onGameTimer.value}s`
     })
@@ -249,7 +241,6 @@ export const useSetupStore = defineStore('setup', () => {
         question,
         textFieldCount,
         timer,
-        score,
         isGameOver,
         onGameTimer,
         isGameDefeated,
