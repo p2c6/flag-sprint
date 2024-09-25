@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useScoreStore } from '@/stores/score';
 import { useSetupStore } from '@/stores/setup';
 import { onMounted, onUnmounted } from 'vue';
 import { RouterLink } from 'vue-router';
 
 const setupStore = useSetupStore()
+const scoreStore = useScoreStore()
 
 onUnmounted(() => {
   setupStore.handleClearSetup()
@@ -31,7 +33,7 @@ onUnmounted(() => {
         <RouterLink :to="{name:'menu'}">
           <a class="text-light pixelify-sans">⬅️ Back</a>
         </RouterLink>
-        <p class="text-light pixelify-sans">🪙 Score: {{ setupStore.score }}</p>
+        <p class="text-light pixelify-sans">🪙 Score: {{ scoreStore.score }}</p>
       </div>
     </div>
     <p class="text-white mt-1">Can you guess what flag is this? 🚩</p>
@@ -63,7 +65,7 @@ onUnmounted(() => {
     <div class="flex flex-col justify-center items-center">
       <p class="text-white pixelify-sans fs-36">☠️ Game Over</p>
       <p class="text-white pixelify-sans fs-18 mt-1"> Your score:</p>
-      <p class="text-white pixelify-sans fs-18"> 🪙 {{ setupStore.score }}</p>
+      <p class="text-white pixelify-sans fs-18"> 🪙 {{ scoreStore.score }}</p>
       <div class="text-white pixelify-sans fs-18 clickable" @click="setupStore.handleClearSetup">🕹️ Play Again</div>
       <RouterLink :to="{name: 'menu'}" style="margin-top: 100px;">
         <a class="text-white pixelify-sans fs-18">
@@ -77,7 +79,7 @@ onUnmounted(() => {
     <div class="flex flex-col justify-center items-center">
       <p class="text-white pixelify-sans fs-36">👑 You're Crown as new Flag Master!</p>
       <p class="text-white pixelify-sans fs-18 mt-1"> Your score:</p>
-      <p class="text-white pixelify-sans fs-18"> 🪙 {{ setupStore.score }}</p>
+      <p class="text-white pixelify-sans fs-18"> 🪙 {{ scoreStore.score }}</p>
       <div class="text-white pixelify-sans fs-18 clickable" @click="setupStore.handleClearSetup">🕹️ Play Again</div>
       <p class="text-white pixelify-sans fs-12">Share this link to your friends to challenge them!</p>
       <RouterLink :to="{name: 'menu'}" style="margin-top: 100px;">
