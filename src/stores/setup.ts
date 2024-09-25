@@ -231,6 +231,7 @@ export const useSetupStore = defineStore('setup', () => {
         onGameTimer.value = 10;
         isGameOver.value = false;
         isGameDefeated.value = false;
+        showDifficultyView.value = true;
         stopTimer()
         resetCountryList()
     }
