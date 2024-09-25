@@ -36,7 +36,7 @@ export const useSetupStore = defineStore('setup', () => {
     const completeCountries = ref<Country[]>([...countries]);
     const isGameDefeated = ref<boolean>(false);
     const difficulty = ref<string>("");
-    const showDifficultyView = ref<boolean>(false);
+    const showDifficultyView = ref<boolean>(true);
 
     const question = ref<Question>({
         flagUrl: "",
@@ -221,6 +221,7 @@ export const useSetupStore = defineStore('setup', () => {
 
     const handleChangeDifficulty = (selectedDifficulty:string) => {
         difficulty.value = selectedDifficulty
+        showDifficultyView.value = false
     }
 
     const handleClearSetup = (): void => {
