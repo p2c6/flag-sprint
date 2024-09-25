@@ -14,7 +14,7 @@ onUnmounted(() => {
 
 <template>
 
-  <div id="difficulty">
+  <div id="difficulty" v-show="setupStore.showDifficultyView">
     <div class="flex flex-col items-center justify-center pixelify-sans">
       <ul class="text-white fs-36">
         <li @click="setupStore.handleChangeDifficulty('easy')">EASY</li>
@@ -24,7 +24,7 @@ onUnmounted(() => {
     </div>
   </div>
 
-  <div id="starting">
+  <div id="starting" v-show="!setupStore.showDifficultyView">
     <div class="flex flex-col justify-center items-center" v-if="!setupStore.showCountdown && !setupStore.showOnGameView">
       <div class="start-btn" @click="setupStore.startGame">
         <p class="pixelify-sans">Start</p>
