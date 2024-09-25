@@ -35,6 +35,8 @@ export const useSetupStore = defineStore('setup', () => {
     const allCountries =ref<Country[]>(countries);
     const completeCountries = ref<Country[]>([...countries]);
     const isGameDefeated = ref<boolean>(false);
+    const difficulty = ref<string>("");
+    const showDifficultyView = ref<boolean>(false);
 
     const question = ref<Question>({
         flagUrl: "",
@@ -193,6 +195,20 @@ export const useSetupStore = defineStore('setup', () => {
         }
     }
 
+    const gameDifficulty = (mode:string):void => {
+        switch (mode) {
+            case "easy":
+                allCountries.value = allCountries.value.filter(country => country.name.length <= 7)
+                break;
+            case "hard": 
+                allCountries.value = allCountries.value.filter(country => country.name.length >= 8)
+                break;
+            case "all":
+                allCountries.value = <Country[]>countries
+                break;
+        }
+    }
+
     const timer = computed((): string => {
         return `${onGameTimer.value}s`
     })
@@ -201,6 +217,10 @@ export const useSetupStore = defineStore('setup', () => {
         scoreStore.setHighScore()
         isGameOver.value = true;
         stopTimer()
+    }
+
+    const handleChangeDifficulty = (selectedDifficulty:string) => {
+        difficulty.value = selectedDifficulty
     }
 
     const handleClearSetup = (): void => {
@@ -213,6 +233,10 @@ export const useSetupStore = defineStore('setup', () => {
         stopTimer()
         resetCountryList()
     }
+
+    watch(difficulty, (newVal) => {
+        gameDifficulty(newVal);
+    })
 
     watch(onGameTimer, (newVal:number) => {
         if(newVal  < 1) {
@@ -247,6 +271,7 @@ export const useSetupStore = defineStore('setup', () => {
         isGameOver,
         onGameTimer,
         isGameDefeated,
+        difficulty,
         /*
             functions
          */
@@ -257,5 +282,7 @@ export const useSetupStore = defineStore('setup', () => {
         handleChangeInput,
         setupGame,
         handleClearSetup,
+        handleChangeDifficulty,
+        showDifficultyView
     }
 });
