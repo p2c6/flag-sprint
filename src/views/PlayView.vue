@@ -13,6 +13,17 @@ onUnmounted(() => {
 </script>
 
 <template>
+
+  <div id="difficulty">
+    <div class="flex flex-col items-center justify-center pixelify-sans">
+      <ul class="text-white fs-36">
+        <li @click="setupStore.handleChangeDifficulty('easy')">EASY</li>
+        <li  @click="setupStore.handleChangeDifficulty('hard')">HARD</li>
+        <li  @click="setupStore.handleChangeDifficulty('all')">DEFAULT (All)</li>
+      </ul>
+    </div>
+  </div>
+
   <div id="starting">
     <div class="flex flex-col justify-center items-center" v-if="!setupStore.showCountdown && !setupStore.showOnGameView">
       <div class="start-btn" @click="setupStore.startGame">
