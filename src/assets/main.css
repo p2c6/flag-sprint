@@ -304,6 +304,23 @@ nav {
   width: 98%;
 }
 
+#difficulty {
+  ul {
+    padding: 0;
+    li {
+      color: #816fc0;
+      list-style: none;
+      text-align: center;
+      cursor: pointer;
+    }
+    li:hover {
+      color: #29fff1;
+    }
+  }
+}
+
+
+
 
 @keyframes slide {
   0%   { left:0px; top:0px; opacity: 0.8;}
