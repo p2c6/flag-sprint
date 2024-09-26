@@ -13,6 +13,9 @@ import { RouterLink } from 'vue-router';
                     <li>PLAY</li>
                 </RouterLink>
                 <li>INSTRUCTION</li>
+                <RouterLink :to="{name: 'best'}">
+                    <li>BEST SCORE</li>
+                </RouterLink>
             </ul>
         </nav>
 </template>
