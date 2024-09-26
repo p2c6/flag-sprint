@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router';
 </scrip>
 
 <template>
-        <nav class="mt-1 fs-mobile pixelify-sans">
+        <nav class="mt-1 fs-24 pixelify-sans">
             <ul>
                 <RouterLink to="/play">
                     <li>🎮 PLAY</li>
