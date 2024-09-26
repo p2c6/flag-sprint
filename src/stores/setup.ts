@@ -129,7 +129,7 @@ export const useSetupStore = defineStore('setup', () => {
         allCountries.value.splice(index, 1);
     }
 
-    const checkAnswer = (value: string) => {
+    const checkAnswer = (value: string): void => {
         if (question.value.country.toLowerCase() == value.toLowerCase()) {
             removeToCountryList(question.value.indexLocatedAt)
 
