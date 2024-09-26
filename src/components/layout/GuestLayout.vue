@@ -1,5 +1,4 @@
 <script setup>
-import Menu from '@/components/Menu.vue';
 import { RouterView } from 'vue-router';
 
 
