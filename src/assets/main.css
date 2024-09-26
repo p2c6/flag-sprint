@@ -107,22 +107,6 @@ a {
   font-weight: 700;
 }
 
-nav {
-  text-align: center;
-  font-size: 36px;
-  ul {
-  font-family: "Pixelify Sans", sans-serif;
-    li {
-      list-style: none;
-      cursor: pointer;
-      
-    }
-    li:hover {
-        color: #fff;
-    }
-  }
-}
-
 .fs-mobile {
   font-size: 30px;
 }
@@ -304,7 +288,7 @@ nav {
   width: 98%;
 }
 
-#difficulty {
+#difficulty, nav {
   ul {
     padding: 0;
     li {
