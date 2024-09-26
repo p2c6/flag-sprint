@@ -8,7 +8,7 @@ import { RouterView } from 'vue-router';
     <main class="main">
     <div class="flex flex-col justify-center items-center">
         <div class="flex text-logo pixelify-sans fw-400"> 
-            <h1>FlagSprint</h1>
+            <h1>🏳️ FlagSprint</h1>
         </div>
     </div>
     <main class="flex flex-col justify-center items-center">
