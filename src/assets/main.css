@@ -58,6 +58,10 @@ a {
   display: flex;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -274,12 +278,16 @@ a {
   animation-duration: 1s;
 }
 
-.textField {
-  margin-left: 2px;
-  margin-right: 2px;
-  width: 30px;
-  height: 40px;
-  font-size: 25px;
+#textfield-container {
+  width: 80%;
+  justify-content: center;
+  gap: 8px;
+}
+
+.textfield {
+  width: 20px;
+  height: 30px;
+  font-size: 15px;
   text-transform: uppercase;
   border: none;
   text-align: center;
@@ -289,7 +297,7 @@ a {
   color: #29fff1;
 }
 
-.textField:focus {
+.textfield:focus {
   outline: none;
 }
 
@@ -377,6 +385,12 @@ a {
 
   #countdown-message {
     font-size: 18px;
+  }
+
+  .textfield {
+    width: 30px;
+    height: 40px;
+    font-size: 25px;
   }
 
   .start-btn {

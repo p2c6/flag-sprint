@@ -85,7 +85,7 @@ export const useSetupStore = defineStore('setup', () => {
     }
 
     const forceTextFieldConfig = (): void => {
-        var fields = document.getElementsByClassName('textField');
+        var fields = document.getElementsByClassName('textfield');
         
         Array.from(fields).forEach(function(field) {
             field.addEventListener("input", function(event) {
@@ -138,7 +138,7 @@ export const useSetupStore = defineStore('setup', () => {
     }
 
     const clearFields = (): void => {
-        var fields = document.getElementsByClassName('textField')
+        var fields = document.getElementsByClassName('textfield')
         letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value = "").join('');
     }
 
@@ -171,7 +171,7 @@ export const useSetupStore = defineStore('setup', () => {
     };
 
     const handleChangeInput = (event:any): void => {
-        const fields = document.getElementsByClassName('textField');
+        const fields = document.getElementsByClassName('textfield');
         letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value).join('');
     }
 

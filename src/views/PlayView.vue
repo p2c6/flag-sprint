@@ -62,11 +62,11 @@ onUnmounted(() => {
     <div class="flag-container">
       <img :src="setupStore.question.flagUrl">
     </div>
-    <div class="flex" id="textfield-container">
+    <div class="flex flex-wrap" id="textfield-container">
       <input v-for="field in setupStore.textFieldCount" 
         :key="field"
         type="text" 
-        class="textField" 
+        class="textfield" 
         maxlength="1" 
         @input="event => setupStore.handleChangeInput(event)"
       >
