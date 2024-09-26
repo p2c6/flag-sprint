@@ -323,8 +323,13 @@ a {
   }
 }
 
-
-
+#github {
+  border-radius: 100px;
+  width: 30px;
+  height: 30px;
+  border: 2px dashed #29fff1;
+  text-align: center;
+}
 
 @keyframes slide {
   0%   { left:0px; top:0px; opacity: 0.8;}
