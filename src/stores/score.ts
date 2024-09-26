@@ -52,10 +52,10 @@ export const useScoreStore =  defineStore('score', () => {
     return {
         score,
         highScore,
+        message,
         incrementScore,
         initHighScore,
         setHighScore,
-        message,
         getHighScore
     }
 
