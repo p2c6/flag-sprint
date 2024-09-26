@@ -339,6 +339,14 @@ a {
   text-align: center;
 }
 
+#countdown {
+  font-size: 40px;
+}
+
+#countdown-message {
+  font-size: 14px;
+}
+
 @keyframes slide {
   0%   { left:0px; top:0px; opacity: 0.8;}
   25%  {left:100px; top:0px; opacity: 0.6;}
@@ -361,6 +369,14 @@ a {
 
   #flag {
     font-size: 45px;
+  }
+
+  #countdown {
+    font-size: 60px;
+  }
+
+  #countdown-message {
+    font-size: 18px;
   }
 
   .start-btn {
