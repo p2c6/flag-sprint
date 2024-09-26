@@ -56,6 +56,7 @@ export const useScoreStore =  defineStore('score', () => {
         initHighScore,
         setHighScore,
         message,
+        getHighScore
     }
 
 });
