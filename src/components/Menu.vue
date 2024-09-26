@@ -10,13 +10,13 @@ import { RouterLink } from 'vue-router';
         <nav class="mt-1 fs-mobile pixelify-sans">
             <ul>
                 <RouterLink to="/play">
-                    <li>PLAY</li>
+                    <li>🎮 PLAY</li>
                 </RouterLink>
                 <RouterLink :to="{name: 'instruction'}">
-                    <li>INSTRUCTION</li>
+                    <li>🗒️ INSTRUCTION</li>
                 </RouterLink>
                 <RouterLink :to="{name: 'best'}">
-                    <li>BEST SCORE</li>
+                    <li>🔟 BEST SCORE</li>
                 </RouterLink>
             </ul>
         </nav>
