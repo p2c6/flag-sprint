@@ -30,7 +30,11 @@ onUnmounted(() => {
       <div class="start-btn" @click="setupStore.startGame">
         <p class="pixelify-sans">Start</p>
       </div>
-      <div class="description text-white mt-1 text-to-center">💭 Guess as many flags as you can to become an ultimate flag master! 👑</div>
+      <div class="description text-white mt-1 text-center">
+        <p>
+          💭 Guess as many flags as you can to become an ultimate flag master! 👑
+        </p>
+      </div>
     </div>
     <div v-else>
       <div  v-if="setupStore.countDown > 0 && !setupStore.showOnGameView" class="flex flex-col justify-center items-center">
