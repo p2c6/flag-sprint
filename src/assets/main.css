@@ -314,6 +314,7 @@ a {
 }
 
 #difficulty, nav {
+  font-size: 20px;
   ul {
     padding: 0;
     li {
@@ -375,6 +376,22 @@ a {
       font-weight: 800;
       font-size: 18px;
       
+    }
+  }
+
+  #difficulty, nav {
+    font-size: 24px;
+    ul {
+      padding: 0;
+      li {
+        color: #816fc0;
+        list-style: none;
+        text-align: center;
+        cursor: pointer;
+      }
+      li:hover {
+        color: #29fff1;
+      }
     }
   }
 }
