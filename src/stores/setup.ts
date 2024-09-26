@@ -141,6 +141,7 @@ export const useSetupStore = defineStore('setup', () => {
 
             if (allCountries.value.length == 0 ) {
                 isGameDefeated.value = true;
+                stopTimer()
                 return;
             }
 
@@ -196,6 +197,7 @@ export const useSetupStore = defineStore('setup', () => {
     }
 
     const gameDifficulty = (mode:string):void => {
+        console.log('triggere...', mode)
         switch (mode) {
             case "easy":
                 allCountries.value = allCountries.value.filter(country => country.name.length <= 7)
@@ -232,6 +234,7 @@ export const useSetupStore = defineStore('setup', () => {
         isGameOver.value = false;
         isGameDefeated.value = false;
         showDifficultyView.value = true;
+        difficulty.value = "";
         stopTimer()
         resetCountryList()
     }
