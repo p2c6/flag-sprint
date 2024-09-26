@@ -35,7 +35,7 @@ onUnmounted(() => {
     <div v-else>
       <div  v-if="setupStore.countDown > 0 && !setupStore.showOnGameView" class="flex flex-col justify-center items-center">
         <div class="pixelify-sans fs-60 text-light" id="countdownContainer">{{ setupStore.countDown }}</div>
-        <div class="text-light fs-24">{{ setupStore.countDownMessage }}</div>
+        <div class="text-light fs-18 pixelify-sans">{{ setupStore.countDownMessage }}</div>
       </div>
     </div>
   </div>

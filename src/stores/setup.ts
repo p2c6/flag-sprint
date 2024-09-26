@@ -23,7 +23,7 @@ interface Answer {
 enum CountDownMessage {
     Ready = "👌 Ready",
     Set = "✌️ Set",
-    Go = "☝️ Go!",
+    Go = "☝️ Goooooo!",
 }
 
 export const useSetupStore = defineStore('setup', () => {
