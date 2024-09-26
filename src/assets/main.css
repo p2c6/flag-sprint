@@ -34,7 +34,12 @@ a {
   text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
 
-  font-size: 24px;
+  font-size: 20px;
+}
+
+#flag {
+  font-size: 36px;
+
 }
 
 .text-white {
@@ -347,6 +352,10 @@ a {
   .text-logo {
     color: #29fff1;
     font-size: 30px;
+  }
+
+  #flag {
+    font-size: 45px;
   }
 
   .start-btn {
