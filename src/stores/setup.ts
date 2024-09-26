@@ -20,6 +20,12 @@ interface Answer {
     timeGot: number
 }
 
+enum CountDownMessage {
+    Ready = "👌 Ready",
+    Set = "✌️ Set",
+    Go = "☝️ Go!",
+}
+
 export const useSetupStore = defineStore('setup', () => {
     const scoreStore = useScoreStore();
     const countDown = ref<number>(3);
@@ -38,6 +44,14 @@ export const useSetupStore = defineStore('setup', () => {
     const difficulty = ref<string>("");
     const showDifficultyView = ref<boolean>(true);
 
+    const countDownMessageList = <string[]>[
+        CountDownMessage.Ready, 
+        CountDownMessage.Set, 
+        CountDownMessage.Go,
+    ];
+
+    const countDownMessage = ref<string>("");
+
     const question = ref<Question>({
         flagUrl: "",
         country: "",
@@ -52,10 +66,13 @@ export const useSetupStore = defineStore('setup', () => {
     };
         
     const startGame = (): void => {
+        let counter = 0;
         scoreStore.score = 0;
         let interval = setInterval(() => {
             if (countDown.value > 1) {
                 displayCountdown()
+                countDownMessage.value = countDownMessageList[counter]
+                counter++;
             } else {
                 clearInterval(interval)
                 showCountdown.value = false;
@@ -277,6 +294,7 @@ export const useSetupStore = defineStore('setup', () => {
         onGameTimer,
         isGameDefeated,
         difficulty,
+        countDownMessage,
         /*
             functions
          */

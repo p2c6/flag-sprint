@@ -45,6 +45,10 @@ a {
   color: #29fff1;
 }
 
+.text-secondary {
+  color: #4e4376;
+}
+
 .flex {
   display: flex;
 }

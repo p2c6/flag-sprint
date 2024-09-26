@@ -13,6 +13,7 @@ onUnmounted(() => {
 </script>
 
 <template>
+<div class="flex- flex-col items-center justify-center">
 
   <div id="difficulty" v-show="setupStore.showDifficultyView">
     <div class="flex flex-col items-center justify-center pixelify-sans">
@@ -29,12 +30,13 @@ onUnmounted(() => {
       <div class="start-btn" @click="setupStore.startGame">
         <p class="pixelify-sans">Start</p>
       </div>
-
       <div class="description text-white mt-1 text-to-center">💭 Guess as many flags as you can to become an ultimate flag master! 👑</div>
     </div>
     <div v-else>
-      <div v-if="setupStore.countDown > 0 && !setupStore.showOnGameView" class="pixelify-sans fs-60" id="countdownContainer">{{ setupStore.countDown }}</div>
-
+      <div  v-if="setupStore.countDown > 0 && !setupStore.showOnGameView" class="flex flex-col justify-center items-center">
+        <div class="pixelify-sans fs-60 text-light" id="countdownContainer">{{ setupStore.countDown }}</div>
+        <div class="text-light fs-24">{{ setupStore.countDownMessage }}</div>
+      </div>
     </div>
   </div>
 
@@ -100,5 +102,7 @@ onUnmounted(() => {
       </RouterLink>
     </div>
   </div>
+
+</div>
   
 </template>
