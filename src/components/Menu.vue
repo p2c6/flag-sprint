@@ -12,7 +12,9 @@ import { RouterLink } from 'vue-router';
                 <RouterLink to="/play">
                     <li>PLAY</li>
                 </RouterLink>
-                <li>INSTRUCTION</li>
+                <RouterLink :to="{name: 'instruction'}">
+                    <li>INSTRUCTION</li>
+                </RouterLink>
                 <RouterLink :to="{name: 'best'}">
                     <li>BEST SCORE</li>
                 </RouterLink>
