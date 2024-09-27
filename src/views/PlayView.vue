@@ -31,7 +31,7 @@ onUnmounted(() => {
         <p class="pixelify-sans">Start</p>
       </div>
       <div class="description text-white mt-1 text-center">
-        <p>
+        <p id="starting-description">
           💭 Guess as many flags as you can to become an ultimate flag master! 👑
         </p>
       </div>

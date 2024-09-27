@@ -488,6 +488,18 @@ div#best-score {
 }
 /* End Best Score */
 
+/* Starting */
+
+#starting {
+  margin-top: 30px;
+
+  #starting-description {
+    margin-top: 10px;
+  }
+}
+
+/* End Starting /*
+
 @keyframes slide {
   0%   { left:0px; top:0px; opacity: 0.8;}
   25%  {left:100px; top:0px; opacity: 0.6;}
@@ -703,6 +715,19 @@ div#best-score {
     }
   }
   /* End Best Score */
+
+  /* Starting */
+
+  #starting {
+    margin-top: 30px;
+
+    #starting-description {
+      margin-top: 20px;
+    }
+  }
+
+  /* End Starting */
+  
 }
 
 
