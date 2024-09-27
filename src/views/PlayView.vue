@@ -96,14 +96,14 @@ onUnmounted(() => {
     </div>
   </div>
 
-  <div id="finish-screen" v-show="setupStore.isGameDefeated">
+  <div id="finish-game" v-show="setupStore.isGameDefeated">
     <div class="flex flex-col justify-center items-center">
-      <p class="text-white pixelify-sans fs-36">👑 You're Crown as new Flag Master!</p>
-      <p class="text-white pixelify-sans fs-18 mt-1">{{ scoreStore.message }}</p>
-      <p class="text-white pixelify-sans fs-18"> 🪙 {{ scoreStore.score }}</p>
-      <div class="text-white pixelify-sans fs-18 clickable" @click="setupStore.handleClearSetup">🕹️ Play Again</div>
-      <p class="text-white pixelify-sans fs-12">Share this link to your friends to challenge them!</p>
-      <RouterLink :to="{name: 'menu'}" style="margin-top: 100px;">
+      <p class="text-white pixelify-sans" id="finish-game-text">You're crown as Flag Master! 👑</p>
+      <p class="text-white pixelify-sans mt-1" id="finish-game-message">{{ scoreStore.message }}</p>
+      <p class="text-white pixelify-sans"  id="finish-game-score"> 🪙 {{ scoreStore.score }}</p>
+      <div class="text-white pixelify-sans fs-18 clickable" id="finish-game-play-again" @click="setupStore.handleClearSetup">🕹️ Play Again</div>
+      <p class="text-white pixelify-sans fs-12" id="finish-game-share">Share this link with your friends and challenge them!</p>
+      <RouterLink :to="{name: 'menu'}" id="finish-game-main-menu">
         <a class="text-white pixelify-sans fs-18">
           📋 Main Menu
         </a>
