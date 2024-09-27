@@ -18,9 +18,9 @@ onUnmounted(() => {
   <div id="difficulty" v-show="setupStore.showDifficultyView">
     <div class="flex flex-col items-center justify-center pixelify-sans">
       <ul class="text-white fs-24">
-        <li @click="setupStore.handleChangeDifficulty('easy')">EASY</li>
-        <li  @click="setupStore.handleChangeDifficulty('hard')">HARD</li>
-        <li  @click="setupStore.handleChangeDifficulty('all')">DEFAULT (All)</li>
+        <li @click="setupStore.handleChangeDifficulty('easy')">🤠 EASY</li>
+        <li  @click="setupStore.handleChangeDifficulty('hard')">🥴 HARD</li>
+        <li  @click="setupStore.handleChangeDifficulty('all')">😎 DEFAULT (All)</li>
       </ul>
     </div>
   </div>
