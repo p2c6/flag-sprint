@@ -158,6 +158,7 @@ export const useSetupStore = defineStore('setup', () => {
 
             if (allCountries.value.length == 0 ) {
                 isGameDefeated.value = true;
+                scoreStore.message = "Final Score: "
                 stopTimer()
                 return;
             }
