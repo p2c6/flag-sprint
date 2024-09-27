@@ -424,6 +424,40 @@ a {
   font-size: 18px;
 }
 
+/* Instruction */
+#instruction-description {
+  width: 80%;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+#instruction-flag {
+  margin-top: 20px;
+  width: 50px;
+  height: 35px;
+}
+
+#instruction-scoring-heading {
+  color: #29fff1;
+  font-size: 14px;
+  
+}
+
+#instruction-main-menu {
+  margin-top: 50px;
+  font-size: 18px;
+}
+
+#instructiong-score-mechanics {
+  width: 200px;
+  font-size: 12px;
+  li {
+      padding: 10px 0px;
+    }
+}
+/* End Instruction */
+
 @keyframes slide {
   0%   { left:0px; top:0px; opacity: 0.8;}
   25%  {left:100px; top:0px; opacity: 0.6;}
@@ -432,6 +466,8 @@ a {
   100% {left:180px; top:0px; opacity: 0.0;}
 }
 
+
+/* Larger Screen */
 @media only screen and (min-width: 768px) {
   .description {
     font-size: 16px;
@@ -578,6 +614,39 @@ a {
   #textfield-container {
     width: 400px;
   }
+
+  /* Instruction */
+  #instruction-description {
+    width: 90%;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  #instruction-flag {
+    margin-top: 20px;
+    width: 60px;
+    height: 45px;
+  }
+
+  #instruction-scoring-heading {
+    color: #29fff1;
+    font-size: 18px;
+  }
+
+  #instruction-main-menu {
+    margin-top: 60px;
+    font-size: 24px;
+  }
+
+  #instructiong-score-mechanics {
+    font-size: 14px;
+    width: 300px;
+    li {
+        padding: 10px 0px;
+      }
+  }
+  /* End Instruction */
 }
 
 
