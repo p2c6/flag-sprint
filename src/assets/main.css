@@ -260,6 +260,7 @@ a {
   position: relative;
   height: 100px;
   width: 100px;
+  margin-top: 10px;
   border-radius: 100%;
   /* background-color: #2b5876; */
   border-width: 2px;
@@ -279,7 +280,7 @@ a {
 }
 
 #textfield-container {
-  width: 80%;
+  width: 200px;
   justify-content: center;
   gap: 8px;
 }
@@ -314,14 +315,24 @@ a {
   }
 }
 
+#playing {
+  width: 60vw;
+}
+
 .playing-header {
-  width: 120%; 
-  margin-bottom: 10px;
+  width: 40vh; 
+  margin-top: 10px;
+}
+
+#playing-question {
+  margin-top: 10px;
+  text-align: center;
 }
 
 .playing-timer-container {
-  width: 98%;
+  width: 50px;
 }
+
 
 #difficulty, nav {
   font-size: 20px;
@@ -542,6 +553,26 @@ a {
   #finish-game-main-menu {
     margin-top: 60px;
     font-size: 24px;
+  }
+
+  /* Playing */
+  
+  #playing {
+    width: 60vw;
+  }
+  
+  .playing-header {
+    width: 55vh; 
+    margin-top: 20px;
+  }
+  
+  #playing-question {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  #textfield-container {
+    width: 400px;
   }
 }
 

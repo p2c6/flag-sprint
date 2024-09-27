@@ -57,7 +57,9 @@ onUnmounted(() => {
         <p class="text-light pixelify-sans">🪙 Score: {{ scoreStore.score }}</p>
       </div>
     </div>
-    <p class="text-white mt-1 text-center">Can you guess what flag is this? 🚩</p>
+    <div id="playing-question">
+      <p class="text-white mt-1 text-center">Can you guess what flag is this? 🚩</p>
+    </div>
 
     <div class="flag-container">
       <img :src="setupStore.question.flagUrl">
