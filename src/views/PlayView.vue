@@ -84,12 +84,12 @@ onUnmounted(() => {
 
   <div id="game-over" v-show="setupStore.isGameOver">
     <div class="flex flex-col justify-center items-center">
-      <p class="text-white pixelify-sans fs-36">☠️ Game Over</p>
-      <p class="text-white pixelify-sans fs-18 mt-1">{{ scoreStore.message }}</p>
-      <p class="text-white pixelify-sans fs-18"> 🪙 {{ scoreStore.score }}</p>
-      <div class="text-white pixelify-sans fs-18 clickable" @click="setupStore.handleClearSetup">🕹️ Play Again</div>
-      <RouterLink :to="{name: 'menu'}" style="margin-top: 100px;">
-        <a class="text-white pixelify-sans fs-18">
+      <p class="text-white pixelify-sans" id="game-over-text">☠️ Game Over</p>
+      <p class="text-white pixelify-sans mt-1" id="game-over-message">{{ scoreStore.message }}</p>
+      <p class="text-white pixelify-sans " id="game-over-score"> 🪙 {{ scoreStore.score }}</p>
+      <div class="text-white pixelify-sans clickable" id="game-over-play-again" @click="setupStore.handleClearSetup">🕹️Play Again</div>
+      <RouterLink :to="{name: 'menu'}" id="game-over-main-menu">
+        <a class="text-white pixelify-sans">
           📋 Main Menu
         </a>
       </RouterLink>
