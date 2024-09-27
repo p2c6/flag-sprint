@@ -42,7 +42,7 @@ export const useScoreStore =  defineStore('score', () => {
                 localStorage.setItem("highScore", highScore.value.toString())
                 message.value = "New Best Score: "
             } else {
-                message.value = "Score: "
+                message.value = "Your Score: "
             }
         } else {
             console.log("Error getting latest high score...")
