@@ -456,7 +456,37 @@ a {
       padding: 10px 0px;
     }
 }
+
 /* End Instruction */
+
+/* Best Score */
+div#best-score {
+  margin-top: 10px;
+
+  #heading {
+    font-size: 24px;
+  }
+
+  #score {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #29fff1;
+  }
+
+  #best-score-description {
+    text-align: center;
+    margin-top: 10px;
+    width: 60%;
+    color: #fff;
+    font-size: 14px;
+  }
+
+  #main-menu {
+    margin-top: 50px;
+    font-size: 16px;
+  }
+}
+/* End Best Score */
 
 @keyframes slide {
   0%   { left:0px; top:0px; opacity: 0.8;}
@@ -465,7 +495,6 @@ a {
   75%  {left:150px; top:0px; opacity: 0.2;}
   100% {left:180px; top:0px; opacity: 0.0;}
 }
-
 
 /* Larger Screen */
 @media only screen and (min-width: 768px) {
@@ -647,6 +676,33 @@ a {
       }
   }
   /* End Instruction */
+
+  /* Best Score */
+  div#best-score {
+    margin-top: 20px;
+
+    #heading {
+      font-size: 30px;
+    }
+
+    #score {
+      margin-top: 20px;
+      font-size: 30px;
+      color: #29fff1;
+    }
+
+    #main-menu {
+      margin-top: 60px;
+      font-size: 18px;
+    }
+
+    #best-score-description {
+      margin-top: 20px;
+      width: 70%;
+      font-size: 16px;
+    }
+  }
+  /* End Best Score */
 }
 
 
