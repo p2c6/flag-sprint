@@ -10,7 +10,7 @@ import { RouterLink } from 'vue-router';
         <nav class="mt-1 pixelify-sans">
             <ul>
                 <RouterLink to="/play">
-                    <li>🎮 PLAY</li>
+                    <li>🎮 PLAY NOW</li>
                 </RouterLink>
                 <RouterLink :to="{name: 'instruction'}">
                     <li>🗒️ INSTRUCTION</li>
