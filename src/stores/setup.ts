@@ -87,8 +87,8 @@ export const useSetupStore = defineStore('setup', () => {
     const forceTextFieldConfig = (): void => {
         var fields = document.getElementsByClassName('textfield');
         
-        Array.from(fields).forEach(function(field) {
-            field.addEventListener("input", function(event) {
+        Array.from(fields).forEach(function(field: any) {
+            field.addEventListener("input", function(event: any) {
                 if (field.value.length == 1 && event.inputType !== "deleteContentBackward") {
                     if (field.nextElementSibling) {
                         field.nextElementSibling.focus();
@@ -96,7 +96,7 @@ export const useSetupStore = defineStore('setup', () => {
                 }
             });
             
-            field.addEventListener("keydown", function(event) {
+            field.addEventListener("keydown", function(event: any) {
                 if (event.code === "Backspace" && field.value.length == 0) {
                     if (field.previousElementSibling) {
                         field.previousElementSibling.focus();
@@ -105,7 +105,11 @@ export const useSetupStore = defineStore('setup', () => {
             });
         });
         
-        fields[0].focus();
+        const firstField = fields[0] as HTMLInputElement;
+        
+        if (firstField) {
+            firstField.focus();
+        }
         willConfigure.value = false;
     };
 
@@ -139,7 +143,7 @@ export const useSetupStore = defineStore('setup', () => {
 
     const clearFields = (): void => {
         var fields = document.getElementsByClassName('textfield')
-        letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value = "").join('');
+        letter.value = Array.from(fields).map((field: any) => field.value = "").join('');
     }
 
     const removeToCountryList = (index: any):void => {
@@ -173,7 +177,7 @@ export const useSetupStore = defineStore('setup', () => {
 
     const handleChangeInput = (event:Event): void => {
         const fields = document.getElementsByClassName('textfield');
-        letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value).join('');
+        letter.value = Array.from(fields).map((field: any) => field.value).join('');
     }
 
     const setupGame = (): void => {
