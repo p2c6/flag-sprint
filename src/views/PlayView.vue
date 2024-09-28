@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Difficulty from '@/components/Difficulty.vue';
 import { useScoreStore } from '@/stores/score';
 import { useSetupStore } from '@/stores/setup';
 import { onMounted, onUnmounted } from 'vue';
@@ -15,15 +16,10 @@ onUnmounted(() => {
 <template>
 <div class="flex- flex-col items-center justify-center">
 
-  <div id="difficulty" v-show="setupStore.showDifficultyView">
-    <div class="flex flex-col items-center justify-center pixelify-sans">
-      <ul class="text-white fs-24">
-        <li @click="setupStore.handleChangeDifficulty('easy')">🤠 EASY</li>
-        <li  @click="setupStore.handleChangeDifficulty('hard')">🥴 HARD</li>
-        <li  @click="setupStore.handleChangeDifficulty('all')">😎 DEFAULT (All)</li>
-      </ul>
-    </div>
-  </div>
+  <Difficulty 
+    :showDifficultyView="setupStore.showDifficultyView" 
+    :onClickDifficulty="setupStore.handleChangeDifficulty"
+  />
 
   <div id="starting" v-show="!setupStore.showDifficultyView">
     <div class="flex flex-col justify-center items-center" v-if="!setupStore.showCountdown && !setupStore.showOnGameView">
