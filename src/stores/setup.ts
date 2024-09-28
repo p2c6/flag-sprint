@@ -88,16 +88,12 @@ export const useSetupStore = defineStore('setup', () => {
         var fields = document.getElementsByClassName('textfield');
         
         Array.from(fields).forEach(function(field: any) {
-            field.addEventListener("input", function(event: any) {
-                if (field.value.length == 1 && event.code !== "Backspace") {
+            field.addEventListener("keydown", function(event: any) {
+                if (field.value.length == 1 && field.nextElementSibling && field.nextElementSibling.value == 0 && event.code !== "Backspace") {
                     if (field.nextElementSibling) {
                         field.nextElementSibling.focus();
                     }
-                }
-            });
-            
-            field.addEventListener("keydown", function(event: any) {
-                if (event.code === "Backspace" && field.value.length == 0) {
+                } else if (field.value.length === 0 && field.previousElementSibling && field.previousElementSibling.value) {
                     if (field.previousElementSibling) {
                         field.previousElementSibling.focus();
                     }
@@ -203,7 +199,7 @@ export const useSetupStore = defineStore('setup', () => {
 
     const runTimer = (): void => {
         myTimer.value = setInterval(() => {
-            // onGameTimer.value--;
+            onGameTimer.value--;
             if (onGameTimer.value <= 0) {
                 clearInterval(myTimer.value);
                 onGameTimer.value = 0;
