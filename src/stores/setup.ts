@@ -171,7 +171,7 @@ export const useSetupStore = defineStore('setup', () => {
         allCountries.value = [...completeCountries.value];
     };
 
-    const handleChangeInput = (event:any): void => {
+    const handleChangeInput = (event:Event): void => {
         const fields = document.getElementsByClassName('textfield');
         letter.value = Array.from(fields).map((field: HTMLInputElement) => field.value).join('');
     }
