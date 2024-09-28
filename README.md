@@ -1,33 +1,19 @@
-# flag-sprint
+# FlagSprint
 
-This template should help get you started developing with Vue 3 in Vite.
+A fun and engaging game to challenge your knowledge of world flags.
 
-## Recommended IDE Setup
+## Game Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+**Timer:** Race against the clock to answer questions as many as you can within 10 seconds.
+**Difficulty Selection:** Challenge yourself whether:
+- Easy
+- Hard
+- Default
+**Best Score Tracking:** Allows to check your previous best score.
 
-## Type Support for `.vue` Imports in TS
+## Tech Stack Used:
+- VueJS
+- TypeScript
+- SCSS
+- Pinia
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
