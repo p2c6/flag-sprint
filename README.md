@@ -2,6 +2,10 @@
 
 A fun and engaging game to challenge your knowledge on world flags.
 
+## You can play the game here: 
+
+https://flag-sprint.vercel.app
+
 ## Game Features
 
 **Timer:** Race against the clock to answer questions as many as you can within 10 seconds.
@@ -15,7 +19,7 @@ A fun and engaging game to challenge your knowledge on world flags.
 **Best Score Tracking:** Allows to check your previous best score.
 
 ## Tech Stack Used:
-- VueJS
+- VueJS 3
 - TypeScript
 - SCSS
 - Pinia
