@@ -98,16 +98,16 @@ export const useSetupStore = defineStore('setup', () => {
             
             field.addEventListener("keydown", function(event: any) {
                 if (event.code === "Backspace" && field.value.length == 0) {
-                    event.preventDefault();
                     if (field.previousElementSibling) {
-                        field.previousElementSibling.focus();
+                        setTimeout(() => {
+                            field.previousElementSibling.focus();
+                        }, 0);
                     }
                 }
             });
         });
         
         const firstField = fields[0] as HTMLInputElement;
-        
         if (firstField) {
             firstField.focus();
         }
