@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { useScoreStore } from '@/stores/score';
-import { onMounted } from 'vue';
+import { onMounted, ref, toRefs } from 'vue';
 
 const store = useScoreStore()
+const reactiveScoreStore = ref(store)
+const { highScore } = toRefs(reactiveScoreStore.value)
+
+const { getHighScore } = store
 
 onMounted(() => {
-    store.getHighScore()
+    getHighScore()
 })
 
 </script>
@@ -16,7 +20,7 @@ onMounted(() => {
             Best Score: 
         </p>
         <p class="text-white pixelify-sans" id="score">
-            🪙 {{ store.highScore }}
+            🪙 {{ highScore }}
         </p>
         <p id="best-score-description">Play more to beat this current best</p>
         <RouterLink :to="{name: 'menu'}" style="margin-top: 100px;" id="main-menu">
