@@ -6,6 +6,7 @@ import { onMounted, onUnmounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import Countdown from '@/components/Countdown.vue';
 import OnGame from '@/components/OnGame.vue';
+import GameOver from '@/components/GameOver.vue';
 
 const setupStore = useSetupStore()
 const scoreStore = useScoreStore()
@@ -44,19 +45,12 @@ onUnmounted(() => {
     :timer="setupStore.timer"
   />
 
-  <div id="game-over" v-show="setupStore.isGameOver">
-    <div class="flex flex-col justify-center items-center">
-      <p class="text-white pixelify-sans" id="game-over-text">☠️ Game Over</p>
-      <p class="text-white pixelify-sans mt-1" id="game-over-message">{{ scoreStore.message }}</p>
-      <p class="text-white pixelify-sans " id="game-over-score"> 🪙 {{ scoreStore.score }}</p>
-      <div class="text-white pixelify-sans clickable" id="game-over-play-again" @click="setupStore.handleClearSetup">🕹️Play Again</div>
-      <RouterLink :to="{name: 'menu'}" id="game-over-main-menu">
-        <a class="text-white pixelify-sans">
-          📋 Main Menu
-        </a>
-      </RouterLink>
-    </div>
-  </div>
+  <GameOver 
+    :isGameOver="setupStore.isGameOver"
+    :message="scoreStore.message"
+    :score="scoreStore.score"
+    :handleClearSetup="setupStore.handleClearSetup"
+  />
 
   <div id="finish-game" v-show="setupStore.isGameDefeated">
     <div class="flex flex-col justify-center items-center">
