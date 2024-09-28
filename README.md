@@ -1,6 +1,6 @@
 # FlagSprint
 
-A fun and engaging game to challenge your knowledge of world flags.
+A fun and engaging game to challenge your knowledge on world flags.
 
 ## Game Features
 
