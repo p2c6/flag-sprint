@@ -98,6 +98,7 @@ export const useSetupStore = defineStore('setup', () => {
             
             field.addEventListener("keydown", function(event: any) {
                 if (event.code === "Backspace" && field.value.length == 0) {
+                    event.preventDefault();
                     if (field.previousElementSibling) {
                         field.previousElementSibling.focus();
                     }
