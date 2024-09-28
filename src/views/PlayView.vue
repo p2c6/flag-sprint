@@ -4,6 +4,7 @@ import { useScoreStore } from '@/stores/score';
 import { useSetupStore } from '@/stores/setup';
 import { onMounted, onUnmounted } from 'vue';
 import { RouterLink } from 'vue-router';
+import Countdown from '@/components/Countdown.vue';
 
 const setupStore = useSetupStore()
 const scoreStore = useScoreStore()
@@ -21,28 +22,14 @@ onUnmounted(() => {
     :onClickDifficulty="setupStore.handleChangeDifficulty"
   />
 
-  <div id="starting" v-show="!setupStore.showDifficultyView">
-    <div class="flex flex-col justify-center items-center" v-if="!setupStore.showCountdown && !setupStore.showOnGameView">
-      <div class="start-btn" @click="setupStore.startGame">
-        <p class="pixelify-sans">Start</p>
-      </div>
-      <div class="description text-white mt-1 text-center">
-        <p id="starting-description">
-          💭 Guess as many flags as you can to become an ultimate flag master! 👑
-        </p>
-      </div>
-    </div>
-    <div v-else>
-      <div  v-if="setupStore.countDown > 0 && !setupStore.showOnGameView" class="flex flex-col justify-center items-center">
-        <div class="pixelify-sans">
-          <p id="countdown">{{ setupStore.countDown }}</p>
-        </div>
-        <div class="text-light pixelify-sans">
-          <p id="countdown-message">{{ setupStore.countDownMessage }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <Countdown 
+    :showDifficultyView="setupStore.showDifficultyView"
+    :showCountdown="setupStore.showCountdown"
+    :handleStartGame="setupStore.startGame"
+    :countDown="setupStore.countDown"
+    :showOnGameView="setupStore.showOnGameView"
+    :countDownMessage="setupStore.countDownMessage"
+  />
 
   <div id="playing" class="flex flex-col items-center justify-center" v-show="!setupStore.showCountdown && setupStore.showOnGameView && !setupStore.isGameOver && !setupStore.isGameDefeated">
     <div class="playing-header">
