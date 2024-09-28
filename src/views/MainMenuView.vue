@@ -1,4 +1,4 @@
-<script setup lang="js">
+<script setup lang="ts">
 import Footer from '@/components/Footer.vue';
 import Menu from '@/components/Menu.vue';
 
