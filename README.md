@@ -19,7 +19,7 @@ https://flag-sprint.vercel.app
 **Best Score Tracking:** Allows to check your previous best score.
 
 ## Tech Stack Used:
-- VueJS 3
+- VueJS 3 (Composition API)
 - TypeScript
 - SCSS
 - Pinia
