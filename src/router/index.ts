@@ -17,22 +17,22 @@ const router = createRouter({
       },
       children: [
         {
-          path: 'menu',
+          path: '/menu',
           name: 'menu',
           component: MainMenuView,
         },
         {
-          path: 'play',
+          path: '/play',
           name: 'play',
           component: PlayView,
         },
         {
-          path: 'best',
+          path: '/best',
           name: 'best',
           component: BestScoreView,
         },
         {
-          path: 'instruction',
+          path: '/instruction',
           name: 'instruction',
           component: InstructionView,
         },
