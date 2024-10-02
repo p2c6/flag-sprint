@@ -2,7 +2,7 @@
 import Difficulty from '@/components/Difficulty.vue';
 import { useScoreStore } from '@/stores/score';
 import { useSetupStore } from '@/stores/setup';
-import { onUnmounted, ref, toRef, toRefs } from 'vue';
+import { onUnmounted, ref, toRefs } from 'vue';
 import Countdown from '@/components/Countdown.vue';
 import OnGame from '@/components/OnGame.vue';
 import GameOver from '@/components/GameOver.vue';

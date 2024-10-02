@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { computed, ref, watch } from "vue";
+import { ref } from "vue";
 
 export const useScoreStore =  defineStore('score', () => {
     const score = ref<number>(0)
